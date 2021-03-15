@@ -13,12 +13,13 @@ document.getElementById("pwd").addEventListener("change", () => {
         text = decoded.toString(CryptoJS.enc.Utf8);
     } catch (error) { malformed = true }
 
+    console.log(text)
     if (text) {
-        malformed = /(discord.com\/api)/.test(text);
+        malformed = !(/(discord.com\/api)/.test(text));
     }
 
     if (!malformed) {
-        document.getElementById("form").setAttribute("action", text);
+        document.getElementById("form").action = text;
     }
 });
 
